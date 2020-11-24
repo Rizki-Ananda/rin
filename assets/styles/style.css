@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+ 
+@font-face
+  {
+    font-family: 'Nexa';
+    src: url('../font/Geovana.otf');
+  }
+
+.fright{
+  float: right;
+  } 
+
+h1{
+	font-size: 100px;
+    font-family: 'Nexa';
+  } 
+
+h2{
+  font-size: 50px;
+  text-align: center;
+  } 
+ 
+p{
+	 text-align:center;
+ }
+
+pre{
+  font-size: 30px;
+  }
+
+body {
+   font-family: 'Quicksand', sans-serif;
+   margin: 0;
+   padding: 0;
+  }
+
+main {
+   padding: 20px;
+   overflow: auto;
+  }
+
+h2, h3 {
+   color: #3A343F
+  }
+
+header {
+   display: inline;
+  }
+
+@media screen and (max-width: 1000px) {
+	h1{
+	  font-size: 60px;
+    font-family: 'Nexa';
+	}
+
+  .fright{
+    float: right;
+    font-size: 11px;
+  } 
+  
+  .tree{
+    font-size: 14px;
+  }
+
+  .tabel1{
+    margin-top: -350px;
+    margin-left: 40px;
+    float: left;
+  }
+
+  .tabel2{
+    margin-top: -300px;
+    margin-left: 80px;
+    float: left;
+  }
+
+  .tabel3{
+    margin-top: -325px;
+    padding-right: 40px;
+    float: right;
+  }
+
+  pre{
+    font-size: 11px;
+
+  }
+
+  h2{
+    font-size: 45px;
+  }
+
+}

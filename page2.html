@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RIN</title>
+   <link rel="stylesheet" href="assets/styles/style.css">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body id="bg" onclick="playAudio()" onload="rain()">
+<main>
+
+<audio id="myAudio">
+  <source src="assets/music/song.mp3" type="audio/mp3">
+  Your browser does not support the audio element.
+</audio>
+
+<pre class="tree">
+                                              .
+                                   .         ;
+      .              .              ;%     ;;
+        ,           ,                :;%  %;
+         :         ;                   :;%;'     .,
+,.        %;     %;            ;        %;'    ,;
+  ;       ;%;  %%;        ,     %;    ;%;    ,%'
+   %;       %;%;     %,', ;       %;  ;%;   ,%;'
+    ;%;      %;        ;%;        % ;%;  ,%;'
+     `%;.     ;%;     %;'         `;%%;.%;'
+      `:;%.    ;%%. %@;        %; ;@%;%'
+         `:%;.  :;bd%;     ,      %;@%;;
+           `@%:.  :;%.   ;@;     ;@@%;'
+             `@%.  `;@%.;%@'    ;@@%;
+               `@%%. `@%%;;   ;@@%;
+                 ;@%. :@%%  %@@%;
+                   %@bd%%%bd%%:;
+                     #@%%%%%:;;
+                     %@@%%%::;
+                     %@@%%%::;
+                     %@@%%%::;
+                     %@@%%%::;
+                     %@@@%(o);  . '
+                     %@@@o%;:(.,'
+                     %@@%%%::;
+                     %@@%%%::;
+                     %@@@%(o);
+                     %@@@o%;:(
+                 `.. %@@@o%::;
+                    `)@@@o%::;
+                     %@@(o)::;
+                    .%@@@@%::;
+                    ;%@@@@%::;.
+                   ;%@@@@%%:;;;.
+               ...;%@@@@@%%:;;;;,..
+</pre>
+
+<table class="tabel1">
+<tr>
+<td id=rin></td>
+</tr>
+</table>
+
+<table class="tabel2">
+<tr>
+<td id=day></td>
+</tr>
+</table>
+
+<table class="tabel3">
+<tr>
+<td id=cong></td>
+</tr>
+</table>
+
+<script>
+
+var y = document.getElementById("myAudio"); 
+
+function playAudio() { 
+  y.play(); 
+  hujan();
+}
+
+var rainI = 0;
+var raintxt = 'りんさん';
+var speed = 150;
+
+function rain() {
+  if (rainI < raintxt.length) {
+      document.getElementById("rin").innerHTML += raintxt.charAt(rainI)+"<br>";
+      rainI++;
+      setTimeout(rain, speed);
+      if (rainI >= raintxt.length) {
+        ame();
+      }
+  }
+}
+
+var ameI = 0;
+var ametxt = 'たんじょうびおめでとう';
+
+function ame() {
+  if (ameI < ametxt.length) {
+      document.getElementById("day").innerHTML += ametxt.charAt(ameI)+"<br>";
+      ameI++;
+      setTimeout(ame, speed);
+      if (ameI >= ametxt.length) {
+        
+      }
+  }
+}
+
+var hujanI = 0;
+var hujantxt = 'きみがすきだ';
+
+function hujan() {
+  if (hujanI < hujantxt.length) {
+      document.getElementById("cong").innerHTML += hujantxt.charAt(hujanI)+"<br>";
+      hujanI++;
+      setTimeout(hujan, speed);
+  }
+}
+  
+</script>
+</main>
+</body>
+</html>
