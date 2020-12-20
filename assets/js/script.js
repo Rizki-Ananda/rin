@@ -1,166 +1,258 @@
-  function startTime() {
-  var today = new Date();
-  var h = today.getHours();
-  var m = today.getMinutes();
-  var s = today.getSeconds();
+function startTime() {
+  var body = document.getElementsByTagName("BODY")[0],
+    h2 = document.getElementsByTagName("H2"),
+    pre = document.getElementsByTagName("PRE"),
+    p = document.getElementsByTagName("P"),
+    today = new Date(),
+    h = today.getHours(),
+    m = today.getMinutes(),
+    s = today.getSeconds();
+  if (h >= 18 || h <= 5) {
+    body.style.backgroundColor = "#1e1e1e";
+    h2[0].style.color = "#faf6e9";
+    pre[0].style.color = "#faf6e9";
+    pre[1].style.color = "#faf6e9";
+    p[0].style.color = "#faf6e9";
+    p[1].style.color = "#faf6e9";
+    p[2].style.color = "#faf6e9";
+    p[3].style.color = "#faf6e9";
+    p[4].style.color = "#faf6e9";
+  }
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById('txt').innerHTML =
-  h + ":" + m + ":" + s;
+  document.getElementById("time").innerHTML = h + "</br>" + m;
 
-  var t = setTimeout(startTime, 500);
+  setTimeout(startTime, 500);
 }
 
 function checkTime(x) {
-  if (x < 10) {x = "0" + x};
+  if (x < 10) {
+    x = "0" + x;
+  }
   return x;
 }
 
+let time = new Date(),
+  jam = time.getHours();
 
-function runPopup(){
-    alert("asw");
-    };
+let i = 0,
+  moo = 0,
+  txt = "りんさんおはようございます！！",
+  txt1 = "りんさんこんにちは！！",
+  txt2 = "りんさんこんばんは！！",
+  txt3 = "なぜりんさんはまだ寝ていないのですか？？",
+  speed = 150;
 
-function randNum(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function charSay() {
+  let asd = document.getElementById("chartext");
+  if (moo == 0) {
+    setTimeout(() => {
+      asd.style.opacity = "0";
+    }, 500);
+    setTimeout(() => {
+      asd.innerHTML = "おっと！!というのはMOOOOO〜";
+    }, 1500);
+    setTimeout(() => {
+      asd.style.opacity = "1";
+    }, 2000);
+    moo = 1;
+  } else {
+    setTimeout(() => {
+      asd.style.opacity = "0";
+    }, 500);
+    setTimeout(() => {
+      asd.innerHTML = "MOOOOO〜";
+    }, 1500);
+    setTimeout(() => {
+      asd.style.opacity = "1";
+    }, 2000);
+  }
 }
 
-_ = self.Flower = function(opts){
-  this.left = opts.left;
-  this.top = opts.top;
-  this.size = randNum(1.5, 6);
-  this.drawFlower();
-}
-_.prototype = {
-  spinFlower: function(el){
-    var r = 0;
-    var spd = Math.random() * (3 - 0.05) + 0.05;
-    (function spin() {
-      if (r === 350){
-        r = 0
-      } else {
-        r += spd
-      }
-      el.style.transform = 'rotate('+r+'deg)';
-      requestAnimationFrame(spin);
-    })();
-  },
-  fall: function(el){
-    var _this = this;
-    var max_right = _this.left + randNum(20, 50);
-    var max_left = _this.left - randNum(20, 50);
-    var dir_i = randNum(0,1);
-    var directions = ['left', 'right'];
-    var direction = directions[dir_i];
-    (function fall() {
-      if (_this.left === max_left){
-        direction = 'right';
-        max_left= _this.left - randNum(20, 50);
-      }
-      if (_this.left === max_right){
-        direction = 'left';
-        max_right = _this.left + randNum(20, 50);
-      }
-      if (direction === 'left'){
-        _this.left -= 1
-      } else {
-        _this.left += 1
-      }
-      _this.top += 2;
-      el.style.top = _this.top + 'px';
-      el.style.left = _this.left + 'px';
-      requestAnimationFrame(fall);
-    })();
-  },
-  fadeOut: function(el){
-    el.style.opacity = 1;
-
-    (function fade() {
-      if ((el.style.opacity -= .007) < 0) {
-        el.parentNode.removeChild(el);
-      } else {
-        requestAnimationFrame(fade);
-      }
-    })();
-  },
-  get petal (){
-    var petal = document.createElement('div');
-    petal.style.userSelect = 'none';
-    petal.style.position = 'absolute';
-    petal.style.background = 'radial-gradient(white 10%, pink 70%)';
-    petal.style.backgroundSize = this.size+'vmin';
-    petal.style.backgroundPosition = '-'+this.size/2+'vmin 0';
-    petal.style.width = petal.style.height = this.size/2+'vmin';
-    petal.style.borderTopLeftRadius = petal.style.borderBottomRightRadius = (42.5 * this.size) / 100 + "vmin";
-    return petal;
-  },
-  get petal_styles(){
-    return [
-      {
-        transform: 'rotate(-47deg)',
-        left: '50%',
-        marginLeft: '-'+this.size/4+'vmin',
-        top: 0
-      },{
-        transform: 'rotate(15deg)',
-        left: '100%',
-        marginLeft: '-'+(this.size * 39 /100)+'vmin',
-        top: (this.size * 17.5) / 100 + 'vmin'
-      },{
-        transform: 'rotate(93deg)',
-        left: '100%',
-        marginLeft: '-'+(this.size * 51) / 100+'vmin',
-        top: (this.size * 58) / 100 + 'vmin'
-      },{
-        transform: 'rotate(175deg)',
-        left: '0%',
-        marginLeft: (this.size * 5) / 100 +'vmin',
-        top: (this.size * 58) / 100 + 'vmin'
-      },{
-        transform: 'rotate(250deg)',
-        left: '0%',
-        marginLeft: -(this.size * 8) / 100 +'vmin',
-        top: (this.size * 17.5) / 100 + 'vmin'
-      }
-    ]
-  },
-  get flower(){
-    var flower = document.createElement('div');
-    flower.style.userSelect = 'none';
-    flower.style.position = 'absolute';
-    flower.style.left = this.left + 'px';
-    flower.style.top = this.top + 'px';
-    flower.style.width = this.size + 'vmin';
-    flower.style.height = this.size + 'vmin';
-    for (var i = 0; i < 5; i++){
-      var petal = this.petal;
-      // var styles = this.petal_styles[i];
-      petal.style.transform = this.petal_styles[i]['transform'];
-      petal.style.top = this.petal_styles[i]['top'];
-      petal.style.left = this.petal_styles[i]['left'];
-      petal.style.marginLeft = this.petal_styles[i]['marginLeft'];
-      flower.appendChild(petal);
+function typeWriter() {
+  if (jam >= 4 && jam < 10) {
+    if (i == 4) {
+      document.getElementById("greeting").innerHTML += " 🌻</br>";
     }
-    this.fadeOut(flower);
-    this.spinFlower(flower);
-    this.fall(flower);
-    return flower;
-  },
-  drawFlower: function(){
-    document.body.appendChild(this.flower);
+    if (i < txt.length) {
+      document.getElementById("greeting").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  if (jam >= 10 && jam < 18) {
+    if (i == 4) {
+      document.getElementById("greeting").innerHTML += " 🌞</br>";
+    }
+    if (i < txt1.length) {
+      document.getElementById("greeting").innerHTML += txt1.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  if (jam >= 18 && jam < 23) {
+    if (i == 4) {
+      document.getElementById("greeting").innerHTML += " 🌝</br>";
+    }
+    if (i < txt2.length) {
+      document.getElementById("greeting").innerHTML += txt2.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  if (jam >= 23) {
+    if (i == 6) {
+      document.getElementById("greeting").innerHTML += " 👻</br>";
+    }
+    if (i < txt3.length) {
+      document.getElementById("greeting").innerHTML += txt3.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  if (jam >= 0 && jam < 4) {
+    if (i == 6) {
+      document.getElementById("greeting").innerHTML += " 👻</br>";
+    }
+    if (i < txt3.length) {
+      document.getElementById("greeting").innerHTML += txt3.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
   }
 }
 
-window.addEventListener('mousedown', function(e){
-  var amt = randNum(1, 5);
-  for (var i = 0; i < amt; i++){
-    var top = randNum(e.clientY - 30, e.clientY + 30);
-    var left = randNum(e.clientX - 30, e.clientX + 10);
-    var flower = new Flower({
-      top: top,
-      left: left
-    });
+var kotobaka = [
+  "もしもし",
+  "こんにちは、ナンダと申します！",
+  "なんでしょうか？",
+  "ごめんなさい!",
+  "事故に会いました！",
+  "ふらふらしています！",
+  "血液型何ですか？俺はO型です！",
+  "何かアレルギーがありますか？",
+  "１＋５＝ 🍓",
+  "どこが痛みますか?",
+  "いらっしゃいませ！",
+  "少々お待ちください、どちら様でしょうか？",
+  "どこへ行きたいですか？",
+  "りん様にお話たいのですが？",
+  "旅行の目的は何ですか？",
+  "はい、どうぞ！",
+  "コーヒーをいただけますか？",
+  "ここには何を書けばいいですか？",
+  "何か手伝いましょか？",
+  "心配しないでください！",
+  "俺を待たないでください！",
+  "たとえ雨が降っても、行かなければならない！",
+  "いつでも来てください！",
+  "天気が晴れたら、散歩しましょう！",
+  "いつ来ましたか？",
+  "俺はね、日本語ができませんよ！",
+  "今何歳ですか？",
+  "『生活』この漢字を読むことができますか？",
+  "ごきげんいかがですか？",
+  "どうして？",
+  "どうしてユベ来なかったのですか？",
+  "あの場所の名前は何ですか？",
+  "カバンの中に本と鉛筆がありますね？",
+  "机の下にはちくんがいますか？",
+  "机の上にはちくんがいますか？",
+  "はちくんは元気ですか？",
+  "これはりんさんのためのwebsiteですよ！",
+  "りんさんはきれいですね、",
+  "俺はインドネシア人ですよ！",
+  "お疲れ様でした！",
+  "いってらっしゃい！",
+  "またいらっしてください！",
+  "最近どうしていますか？",
+  "インドネシアへ行ったことがありますか？",
+  "ここは暑いよ！",
+  "好きな食べ物がありますか？",
+  "嫌いな食べ物がありますか？",
+  "りんさんは何がほしいですか？",
+  "学校をさぼってダメですよ！",
+  "ここで座ってもいいですか？",
+  "本を読みなさい！",
+];
+
+let xyz = 0,
+  jarak = 52,
+  minimal = 0,
+  rx = Math.floor(Math.random() * jarak) + minimal;
+
+function nezumi() {
+  if (xyz < kotobaka[rx].length) {
+    document.getElementById("kotoba").innerHTML += kotobaka[rx].charAt(xyz);
+    xyz++;
+    setTimeout(nezumi, speed);
   }
-});
+}
+
+function getWeather(city) {
+  let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=7a5c8d7374c83319c33e3e0819d4edde`;
+  let pre = document.getElementById("icon");
+  document.getElementById("city").innerHTML = city;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((result) => {
+      let main = result["main"],
+        sparator = " ",
+        breakline = "</br>",
+        temp = sparator + main["temp"] + " °C",
+        humidity = sparator + main["humidity"] + " %",
+        feelsLike = sparator + main["feels_like"] + " °C",
+        windSpeed = sparator + result["wind"]["speed"] + " m/s";
+
+      let weather = result["weather"];
+      //console.log(result);
+
+      for (i in weather) {
+        let icon = weather[i]["icon"];
+        if (icon == "02n" || icon == "01n") {
+          pre.classList.add("c" + icon);
+        } else if (icon.includes("n")) {
+          let replaced = icon.replace("n", "d");
+          pre.classList.add("c" + replaced);
+        } else {
+          pre.classList.add("c" + icon);
+        }
+        document.getElementById("main").innerHTML =
+          weather[i]["description"] +
+          temp +
+          " | like" +
+          feelsLike +
+          breakline +
+          "wind" +
+          windSpeed +
+          " | humidity" +
+          humidity;
+      }
+      typeWriter();
+    })
+    .catch((error) => {
+      console.error("Error: ", error);
+    });
+}
+
+function getCity() {
+  return new Promise((resolve, reject) => {
+    fetch("https://ipapi.co/json/")
+      .then(function (response) {
+        response.json().then((jsonData) => {
+          resolve(jsonData);
+        });
+      })
+      .catch(function (error) {
+        reject(error);
+      });
+  });
+}
+
+async function asyncCall() {
+  const result = await getCity();
+  getWeather(result["city"], result["country"]);
+}
+
+asyncCall();
