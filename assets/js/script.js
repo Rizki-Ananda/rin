@@ -23,10 +23,6 @@ function startTime() {
   s = checkTime(s);
   document.getElementById("time").innerHTML = h + "</br>" + m;
 
-  $.get("cat_1.txt", function (data) {
-    char.innerHTML = data;
-  });
-
   setTimeout(startTime, 500);
 }
 
@@ -271,3 +267,6 @@ async function asyncCall() {
 }
 
 asyncCall();
+$.get("cat_1.txt", function (data) {
+  char.innerHTML = data;
+});
