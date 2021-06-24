@@ -55,14 +55,14 @@ function charSay() {
     }, 500);
     setTimeout(() => {
       asd.innerHTML = "また今度ね、、";
-      $.get("cat_2.txt", function (data) {
-        char.innerHTML = data;
-      });
     }, 1500);
     setTimeout(() => {
       asd.style.opacity = "1";
       char.style.opacity = "1";
     }, 2000);
+    $.get("cat_2.txt", function (data) {
+      char.innerHTML = data;
+    });
     moo = 1;
   } else {
     setTimeout(() => {
@@ -74,7 +74,7 @@ function charSay() {
     setTimeout(() => {
       asd.style.opacity = "1";
     }, 2000);
-    $.get("cat_1.txt", function (data) {
+    $.get("cat_3.txt", function (data) {
       char.innerHTML = data;
     });
   }
