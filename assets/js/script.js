@@ -51,14 +51,12 @@ function charSay() {
   if (moo == 0) {
     setTimeout(() => {
       asd.style.opacity = "0";
-      char.style.opacity = "0";
     }, 500);
     setTimeout(() => {
       asd.innerHTML = "また今度ね、、";
     }, 1500);
     setTimeout(() => {
       asd.style.opacity = "1";
-      char.style.opacity = "1";
     }, 2000);
     $.get("cat_2.txt", function (data) {
       char.innerHTML = data;
