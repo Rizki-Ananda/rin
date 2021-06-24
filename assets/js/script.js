@@ -45,12 +45,15 @@ let i = 0,
 
 function charSay() {
   let asd = document.getElementById("chartext");
+  $.get("cat_1.txt",function(data){
+    document.getElementById('char').innerHTML= data;
+  });
   if (moo == 0) {
     setTimeout(() => {
       asd.style.opacity = "0";
     }, 500);
     setTimeout(() => {
-      asd.innerHTML = "おっと！!というのはMOOOOO〜";
+      asd.innerHTML = "また今度ね、、";
     }, 1500);
     setTimeout(() => {
       asd.style.opacity = "1";
@@ -61,7 +64,7 @@ function charSay() {
       asd.style.opacity = "0";
     }, 500);
     setTimeout(() => {
-      asd.innerHTML = "MOOOOO〜";
+      asd.innerHTML = "ニャー〜";
     }, 1500);
     setTimeout(() => {
       asd.style.opacity = "1";
