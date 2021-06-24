@@ -6,7 +6,8 @@ function startTime() {
     today = new Date(),
     h = today.getHours(),
     m = today.getMinutes(),
-    s = today.getSeconds();
+    s = today.getSeconds(),
+    char = document.getElementById("char");
   if (h >= 18 || h <= 5) {
     body.style.backgroundColor = "#1e1e1e";
     h2[0].style.color = "#faf6e9";
@@ -21,6 +22,10 @@ function startTime() {
   m = checkTime(m);
   s = checkTime(s);
   document.getElementById("time").innerHTML = h + "</br>" + m;
+
+  $.get("cat_1.txt", function (data) {
+    char.innerHTML = data;
+  });
 
   setTimeout(startTime, 500);
 }
@@ -44,19 +49,23 @@ let i = 0,
   speed = 150;
 
 function charSay() {
-  let asd = document.getElementById("chartext");
-  $.get("cat_1.txt",function(data){
-    document.getElementById('char').innerHTML= data;
-  });
+  let asd = document.getElementById("chartext"),
+    char = document.getElementById("char");
+
   if (moo == 0) {
     setTimeout(() => {
       asd.style.opacity = "0";
+      char.style.opacity = "0";
     }, 500);
     setTimeout(() => {
       asd.innerHTML = "また今度ね、、";
+      $.get("cat_2.txt", function (data) {
+        char.innerHTML = data;
+      });
     }, 1500);
     setTimeout(() => {
       asd.style.opacity = "1";
+      char.style.opacity = "1";
     }, 2000);
     moo = 1;
   } else {
@@ -69,6 +78,9 @@ function charSay() {
     setTimeout(() => {
       asd.style.opacity = "1";
     }, 2000);
+    $.get("cat_1.txt", function (data) {
+      char.innerHTML = data;
+    });
   }
 }
 
