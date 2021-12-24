@@ -1,4 +1,8 @@
+const fireworks = ['⠄', '⡢', '⢑', '⠈', '⠀', '⢀', '⣠', '⣤', '⡶', '⠞', '⠋', '⠁', '⠀', '⠈', '⠙', '⠳', '⣆', '⡀', '⠀', '⠆', '⡷', '⣹', '⢈', '⠀', '⠐', '⠪', '⢅', '⡀', '⠀'];
+var fire_index = 0;
+
 function startTime() {
+  document.title = fireworks[fire_index];
   var body = document.getElementsByTagName("BODY")[0],
     h2 = document.getElementsByTagName("H2"),
     pre = document.getElementsByTagName("PRE"),
@@ -23,7 +27,11 @@ function startTime() {
   s = checkTime(s);
   document.getElementById("time").innerHTML = h + "</br>" + m;
 
-  setTimeout(startTime, 500);
+  setTimeout(startTime, 300);
+  fire_index++;
+  if(fire_index == fireworks.length){
+    fire_index = 0
+  }
 }
 
 function checkTime(x) {
